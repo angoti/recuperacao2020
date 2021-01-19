@@ -12,9 +12,9 @@ import com.angoti.recuperacao.dominio.Aluno;
 public class AlunoDAO implements DAO<Aluno> {
 
 	private String selecionaTodos = "select * from alunos";
-	private String selecionaPorID = "select * from alunos where id=?";
-	private String atualiza = "update alunos set nome = ? where id = ?";
-	private String exclui = "delete from alunos where id=?";
+	private String selecionaPorID = "select * from alunos where idalunos=?";
+	private String atualiza = "update alunos set nome = ? where idalunos = ?";
+	private String exclui = "delete from alunos where idalunos=?";
 	private String cria = "insert into alunos(nome) values (?)";
 
 	Connection conexao;
@@ -94,5 +94,38 @@ public class AlunoDAO implements DAO<Aluno> {
 		return lista;
 	}
 
-	
+	public static void main(String[] args) {
+		Aluno aluno1 = new Aluno();
+		Aluno aluno2 = new Aluno();
+		Aluno aluno3 = new Aluno();
+		
+		aluno1.setNome("AAA");
+		aluno2.setNome("BBB");
+		aluno3.setNome("CCC");
+		
+		DAO<Aluno> alunoDAO = new AlunoDAO();
+		
+		alunoDAO.criar(aluno1);
+		alunoDAO.criar(aluno2);
+		alunoDAO.criar(aluno3);
+		for (Aluno aluno : alunoDAO.buscarTodos()) {
+			System.out.println(aluno.getId() +" - "+ aluno.getNome());
+		}
+
+		aluno1.setNome("XXX");
+		aluno1.setId(13);
+		alunoDAO.atualizar(aluno1);
+		for (Aluno aluno : alunoDAO.buscarTodos()) {
+			System.out.println(aluno.getId() +" - "+ aluno.getNome());
+		}
+		
+		
+		System.out.println("ID=22: " + alunoDAO.buscarPorID(22).getNome());
+		
+		alunoDAO.excluir(13);
+		
+		for (Aluno aluno : alunoDAO.buscarTodos()) {
+			System.out.println(aluno.getId() +" - "+ aluno.getNome());
+		}
+	}
 }

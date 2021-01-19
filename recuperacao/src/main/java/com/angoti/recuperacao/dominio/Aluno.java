@@ -3,6 +3,10 @@ package com.angoti.recuperacao.dominio;
 public class Aluno {
 	private int id;
 	private String nome;
+	
+	public Aluno() {
+		super();
+	}
 
 	public Aluno(int id, String nome) {
 		super();
@@ -12,6 +16,10 @@ public class Aluno {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setNome(String nome) {
