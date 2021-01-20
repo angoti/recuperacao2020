@@ -1,0 +1,13 @@
+package com.angoti.recuperacao;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class AppRecuperacaoApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
