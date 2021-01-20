@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="fragments/layout">
 <div th:fragment="conteudo">
-  <div class="container mt-3">
-    <h1>Recuperação 2020-2</h1>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <div class="col-md-12">
+          <h3>Novo aluno</h3>
+          <form th:action="@{/gravar}" th:object="${aluno}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <div class="row">
+              <div class="form-group col-md-8">
+                <label for="nome" class="col-form-label">Nome</label>
+                <input type="text" th:field="*{nome}" id="nome" class="form-control" placeholder="Name">
+              </div>
+              <div class="col-md-6">
+                <input type="submit" class="btn btn-primary" value="Gravar">
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 </html>
