@@ -6,10 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class Controlador {
 
-	@GetMapping("/exemplo")
-	public String exemplo() {
-		System.out.println("---------------->");
-		return "exemplo";
+	@GetMapping("/")
+	public String home() {
+		return "home";
+	}
+
+	@GetMapping("/crud")
+	public String crud() {
+		return "index";
 	}
 
 }
